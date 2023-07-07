@@ -24,11 +24,6 @@ public:
 
     }
 
-    bool armed() override
-    {
-
-    }
-
     bool landed() override
     {
 
