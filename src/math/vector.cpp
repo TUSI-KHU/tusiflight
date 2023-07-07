@@ -15,7 +15,7 @@ void Vector3D::zero()
     x = y = z = 0.0f;
 }
 
-bool Vector3D::isZero(float tolerance = EPSILON) const
+bool Vector3D::isZero(float tolerance) const
 {
     return (x > -tolerance && x < tolerance &&
             y > -tolerance && y < tolerance &&
@@ -224,11 +224,11 @@ Vector3D Vector3D::normalize()
     return vector;
 }
 
-float Vector3D::normalizeInPlace()
+void Vector3D::normalizeInPlace()
 {
     Vector3D &v = *this;
 
-    float iradius = 1.f / (this->length() + 1.192092896e-07F); // FLT_EPSILON
+    float iradius = 1.f / (this->length() + EPSILON);
 
     v.x *= iradius;
     v.y *= iradius;

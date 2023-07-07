@@ -41,7 +41,7 @@ public:
     float length2D() const;
     float length2DSqared() const;
     Vector3D normalize();
-    float normalizeInPlace();
+    void normalizeInPlace();
     float distanceTo(const Vector3D &other) const;
     float distanceToSqared(const Vector3D &other) const;
     float dotProduct(const Vector3D &other) const;

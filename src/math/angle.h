@@ -12,7 +12,7 @@ public:
     Angle3D(void);
     Angle3D(float Roll, float Pitch, float Yaw);
     void zero();
-    bool isZero(float tolerance = EPSILON) const;
+    bool isZero(float tolerance) const;
 
     // Allow pass by value
     operator Angle3DByValue &() { return *((Angle3DByValue *)(this)); }

@@ -71,6 +71,8 @@ Angle3D Angle3D::operator-(void) const
     res.roll = -roll;
     res.pitch = -pitch;
     res.yaw = -yaw;
+
+    return res;
 }
 
 Angle3D Angle3D::operator-(const Angle3D &a) const
