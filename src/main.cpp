@@ -1,11 +1,14 @@
 #include <Arduino.h>
+#include "logic.h"
+
+Logic logic;
 
 void setup()
 {
-  // put your setup code here, to run once:
+    logic.setup();
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
+    logic.loop();
 }
