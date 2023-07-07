@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "logic.h"
+#include "stages.h"
 
-Logic logic;
+Stages logic;
 
 void setup()
 {

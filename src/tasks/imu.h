@@ -1,7 +1,7 @@
 #pragma once
-#include "../tasks.h"
+#include "../task.h"
 
-class IMUTasks : public Tasks
+class IMUTask : public Task
 {
 public:
     bool init() override

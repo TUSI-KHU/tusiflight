@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 #include "tasks/imu.h"
-#include "states.h"
+#include "state.h"
 
 typedef enum
 {
@@ -13,12 +13,12 @@ typedef enum
     LANDED
 } stage_e;
 
-class Logic
+class Stages
 {
 private:
     stage_e stage;
 
-    IMUTasks imu;
+    IMUTask imu;
 
     void hang()
     {
@@ -29,7 +29,7 @@ private:
     }
 
 public:
-    Logic() : stage(stage_e::INIT) {}
+    Stages() : stage(stage_e::INIT) {}
 
     void setup()
     {

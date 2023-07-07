@@ -1,4 +1,4 @@
-class States
+class State
 {
 public:
     float x, y, z;

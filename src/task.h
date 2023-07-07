@@ -1,6 +1,6 @@
 #pragma once
 
-class Tasks
+class Task
 {
     virtual bool init() = 0;
     virtual bool armed() = 0;
