@@ -52,7 +52,9 @@ public:
 
     void loop()
     {
-        switch (updateStage())
+        bool failed = false;
+
+        switch (stage)
         {
         case stage_e::LAUNCHED:
             imu.launched();
@@ -72,10 +74,9 @@ public:
         return stage;
     }
 
-    stage_e updateStage()
+    void updateStage()
     {
         // Return updated stage based on factors such as sensor
         // TODO: Add stage transpose logic
-        return stage_e::LAUNCHED;
     }
 };
