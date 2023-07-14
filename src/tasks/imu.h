@@ -4,28 +4,28 @@
 class IMUTask : public Task
 {
 public:
-    bool init() override
+    bool init(State state) override
     {
-
+        return true;
     }
 
-    bool armed() override
+    bool armed(State state) override
     {
-
+        return true;
     }
 
-    bool launched() override
+    bool launched(State state) override
     {
-
+        return true;
     }
 
-    bool apogee() override
+    bool apogee(State state) override
     {
-
+        return true;
     }
 
-    bool landed() override
+    bool landed(State state) override
     {
-
+        return true;
     }
 };

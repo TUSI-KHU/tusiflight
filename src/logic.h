@@ -1,7 +1,9 @@
 #pragma once
 #include <Arduino.h>
 
+#include "task.h"
 #include "tasks/imu.h"
+#include "hardware/buzzer.h"
 #include "state.h"
 
 typedef enum
@@ -13,35 +15,44 @@ typedef enum
     LANDED
 } stage_e;
 
-class Stages
+class Logic
 {
 private:
-    stage_e stage;
+    stage_e stage;  
+
+    State state;
 
     IMUTask imu;
+
+    Buzzer buzzer = Buzzer(CORE_LED0_PIN);
+
 
     void hang()
     {
         while (1)
         {
+            buzzer.Set(true);
+            delay(1000);
+            buzzer.Set(false);
             delay(1000);
         }
     }
 
 public:
-    Stages() : stage(stage_e::INIT) {}
+    Logic() : stage(stage_e::INIT) {}
 
     void setup()
     {
         bool failed = false;
-        failed |= imu.init();
+        failed |= !imu.init(state);
         if (failed)
         {
             hang();
         }
+        hang();
 
         stage = stage_e::ARMED;
-        failed |= imu.armed();
+        failed |= !imu.armed(state);
         if (failed)
         {
             hang();
@@ -53,28 +64,32 @@ public:
     void loop()
     {
         bool failed = false;
+        updateStagePostLaunch();
 
         switch (stage)
         {
         case stage_e::LAUNCHED:
-            imu.launched();
+            failed |= !imu.launched(state);
             break;
         case stage_e::APOGEE:
-            imu.apogee();
+            failed != !imu.apogee(state);
             break;
         case stage_e::LANDED:
-            imu.landed();
+            failed != !imu.landed(state);
             break;
+        default:
+            hang();
+        }
+
+        if (failed)
+        {
+            hang();
         }
         
+        delay(1000);
     }
 
-    stage_e getCurrentStage()
-    {
-        return stage;
-    }
-
-    void updateStage()
+    void updateStagePostLaunch()
     {
         // Return updated stage based on factors such as sensor
         // TODO: Add stage transpose logic
