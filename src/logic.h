@@ -49,7 +49,6 @@ public:
         {
             hang();
         }
-        hang();
 
         stage = stage_e::ARMED;
         failed |= !imu.armed(state);
