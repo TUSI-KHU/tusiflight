@@ -1,4 +1,4 @@
-#include "log.h"
+#include "logging.h"
 #include<string.h>
 
 Logger::Logger(){
