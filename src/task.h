@@ -4,9 +4,10 @@
 
 class Task
 {
-    virtual bool init(State state) = 0;
-    virtual bool armed(State state) = 0;
-    virtual bool launched(State state) = 0;
-    virtual bool apogee(State state) = 0;
-    virtual bool landed(State state) = 0;
+    virtual bool init();
+    virtual bool armed();
+    virtual bool launched();
+    virtual bool apogee();
+    virtual bool landed();
+    // 비상 상황에서의 작동에 대한 정의
 };
